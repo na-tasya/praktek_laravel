@@ -1,11 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/about', function () {
-    return 'Pos Barokah Mart adalah toko yang menyediakan berbagai kebutuhan sehari-hari dengan harga terjangkau dan pelayanan yang ramah.';
-});
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('dashboard');

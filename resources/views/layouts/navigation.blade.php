@@ -1,33 +1,29 @@
-<nav class="bg-white border-b border-gray-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16 items-center">
 
-            <div class="flex space-x-6">
+<nav style="background: #ffffff; border-bottom: 1px solid #e5e7eb; padding: 12px 32px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
+    @auth
+        <a href="{{ route('dashboard') }}"
+           style="color: #374151; text-decoration: none; font-weight: bold;">
+            Dashboard
+        </a>
 
-                <a href="{{ route('dashboard') }}"
-                   class="font-semibold {{ request()->routeIs('dashboard') ? 'text-indigo-600' : 'text-gray-700' }}">
-                    Dashboard
-                </a>
+        <a href="{{ route('categories.index') }}"
+           style="color: #374151; text-decoration: none;">
+            Kategori
+        </a>
 
-            </div>
+        <a href="{{ route('products.index') }}"
+           style="color: #374151; text-decoration: none;">
+            Produk
+        </a>
 
-            <div class="flex items-center space-x-4 text-sm">
-
-                <span class="text-gray-600">
-                    {{ auth()->user()->name }}
-                </span>
-
-                <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-
-                    <button type="submit"
-                            class="text-gray-500 hover:text-red-600">
-                        Keluar
-                    </button>
-                </form>
-
-            </div>
-
+        <div style="margin-left: auto;">
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit"
+                    style="border: 1px solid #d1d5db; background: #ffffff; color: #374151; padding: 9px 14px; border-radius: 6px; cursor: pointer;">
+                    Keluar
+                </button>
+            </form>
         </div>
-    </div>
+    @endauth
 </nav>
